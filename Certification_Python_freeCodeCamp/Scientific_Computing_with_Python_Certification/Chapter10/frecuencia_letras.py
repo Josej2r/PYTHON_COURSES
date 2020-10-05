@@ -4,6 +4,7 @@ fname = input('Introduzaca el nombre del archivo: ')
 
 try:
     fhand = open(fname)
+
 except :
     print('El archivo no se puede abrir ', fname)
     exit()
@@ -13,18 +14,32 @@ except :
 for linea in fhand:
     linea = linea.rstrip()  # quitamos los saltos de lineas
     linea = linea.translate(linea.maketrans('', '', string.punctuation))
+
+# ELIMINAR NUMEROS DE LAS PALABRAS
+
     linea = linea.lower()
-
-    if len(linea) == 0:
-        continue
-
     palabras = linea.split()
 
-    # tenemos una lista con las palabras de cada lineas
-    for i in range(len(palabras)):
-        letra = list(palabras[i])
-        print(letra)
-        d[letra] = d.get(letra, 0) + 1
-        print(d)
+    for palabra in palabras:
+        d[palabra] = d.get(palabra, 0) + 1
 
-# TENEMOS QUE ELIMINAR LAS LINEAS EN BLANCO
+
+# tendríamos un diccionario con las palbras y su frecuencia
+
+# creamos tupla palabra, frecuencia
+
+t = list(d.items())
+
+lst_change = list()
+
+for word, frecuency in t:
+    lst_change.append((frecuency, word))
+
+lst_change.sort(reverse=True)
+
+lst_sorted = list()
+
+for frecuency, key in lst_change:
+    lst_sorted.append((key, frecuency))
+
+print(lst_sorted)
