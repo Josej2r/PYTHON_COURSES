@@ -42,4 +42,5 @@ lst_sorted = list()
 for frecuency, key in lst_change:
     lst_sorted.append((key, frecuency))
 
-print(lst_sorted)
+for x in lst_sorted:
+    print(x)
