@@ -13,27 +13,28 @@ except :
 
 for linea in fhand:
     linea = linea.rstrip()  # quitamos los saltos de lineas
+
     linea = linea.translate(linea.maketrans('', '', string.punctuation))
-
-# ELIMINAR NUMEROS DE LAS PALABRAS
-
+    linea = linea.translate(linea.maketrans('', '', string.digits))
     linea = linea.lower()
     palabras = linea.split()
 
     for palabra in palabras:
-        d[palabra] = d.get(palabra, 0) + 1
+        for letra in palabra:  # este es el que nos separa las palabras en letra
+            d[letra] = d.get(letra, 0) + 1
 
 
-# tendríamos un diccionario con las palbras y su frecuencia
+# tendríamos un diccionario con las letra y su frecuencia
 
-# creamos tupla palabra, frecuencia
+# creamos tupla letra, frecuencia
+
 
 t = list(d.items())
 
 lst_change = list()
 
-for word, frecuency in t:
-    lst_change.append((frecuency, word))
+for letter, frecuency in t:
+    lst_change.append((frecuency, letter))
 
 lst_change.sort(reverse=True)
 
