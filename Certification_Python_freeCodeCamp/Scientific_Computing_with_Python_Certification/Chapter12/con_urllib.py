@@ -8,4 +8,4 @@ except:
     print("La URL introducidad no es correcta: ")
     exit()
 for linea in fhand:
-    print(linea.decode().split())
+    print(linea.decode().strip())

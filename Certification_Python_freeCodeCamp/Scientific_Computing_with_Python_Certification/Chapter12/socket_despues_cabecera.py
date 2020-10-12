@@ -1,3 +1,6 @@
+# solamente mostraremos los datos después de recibir la cabecera y la línea
+# en blanco
+
 import socket
 import time
 
@@ -35,17 +38,13 @@ while True:
     # el print anterior para ver la cantidad de caracteres recibidos y acumulados
 
     almacen_texto = almacen_texto + datos
-    if contador_caracteres < 250:
+    if datos == b"\r\n":
         print(datos.decode(), end='')
+        # print("lo hemos encontado")
 
     else:
+
         continue
 
-# VERSION NO OPTIMA PERO HACE LO QUE SE PEDIA
-# Pero aqui fuera abriamos leido el texto entero y en len(almacen_texto)
-# tendriamos todos los caracteres
-
-print(f"\n La pagina tiene {len(almacen_texto)} caracteres")
-# print(almacen_texto.decode(), end='')
 
 misock.close()
