@@ -19,8 +19,10 @@ cur.execute('INSERT INTO Canciones (titulo, reproducciones) VALUES (?, ?)',
 cur.execute('INSERT INTO Canciones (titulo, reproducciones) VALUES (?, ?)',
             ('La rosalía', 150))
 
-# Esta forma de insertar datos me da error no se si es que no lo escribo bien
-# cur.execute('INSERT INTO Canciones (titulo, reproducciones) VALUES('My way', 15)')
+# Esta forma de insertar datos tenemos que tener en cuenta como usamos COMILLAS
+# simples o dobles
+# cur.execute('INSERT INTO Canciones (titulo, reproducciones) VALUES("My way", 15)')
+cur.execute("INSERT INTO Canciones (titulo, reproducciones) VALUES('My way', 15)")
 
 # Linea importante para forzar que se guarden los datos en la DB
 
